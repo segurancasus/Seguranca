@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080f">
+  <meta name="description" content="Segurança Sus — vídeos, memes e aventuras de Among Us no YouTube e TikTok">
+  <title>Segurança Sus | Among Us</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #ff183f;
+      --red-dark: #b90027;
+      --purple: #9146ff;
+      --text: #fff;
+      --muted: #aaaaba;
+      --card: rgba(255,255,255,.075);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(145,70,255,.30), transparent 32%),
+        radial-gradient(circle at 90% 85%, rgba(255,0,65,.22), transparent 34%),
+        linear-gradient(145deg, #12121d 0%, #07070b 55%, #030305 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Luzes decorativas */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+      animation: floatLight 7s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: rgba(255,24,63,.18);
+      top: 5%;
+      left: -100px;
+    }
+
+    body::after {
+      background: rgba(145,70,255,.16);
+      right: -100px;
+      bottom: 5%;
+      animation-delay: -3s;
+    }
+
+    @keyframes floatLight {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(30px) scale(1.15); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 470px;
+      margin: 0 auto;
+      padding: 34px 17px 24px;
+      text-align: center;
+      animation: enter .7s ease both;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      margin-bottom: 17px;
+      border-radius: 999px;
+      background: rgba(255,24,63,.10);
+      border: 1px solid rgba(255,24,63,.28);
+      color: #ffb6c2;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 12px var(--red);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .45; transform: scale(.75); }
+    }
+
+    .logo {
+      width: 155px;
+      height: 155px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      border: 3px solid var(--red);
+      box-shadow:
+        0 0 0 7px rgba(255,24,63,.07),
+        0 0 42px rgba(255,24,63,.35);
+      background: #111;
+      animation: logoFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .link:focus-visible {
+      outline: 3px solid rgba(255,24,63,.75);
+      outline-offset: 3px;
+    }
+
+
+    h1 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 auto 25px;
+      max-width: 380px;
+    }
+
+    .subtitle b {
+      color: #fff;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 4px 12px;
+      color: #8f8f9d;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(255,255,255,.15), transparent);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.11);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      transition:
+        transform .22s ease,
+        background .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .link:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.11);
+      border-color: rgba(255,255,255,.20);
+      box-shadow: 0 15px 35px rgba(0,0,0,.28);
+    }
+
+    .link:active {
+      transform: scale(.97);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      margin-right: 13px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .youtube .icon {
+      background: #ff0033;
+      box-shadow: 0 7px 22px rgba(255,0,51,.28);
+    }
+
+    .tiktok .icon {
+      background: #0d0d12;
+      border: 1px solid #45454f;
+      box-shadow: 0 7px 22px rgba(0,0,0,.25);
+    }
+
+    .text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .text strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .text span {
+      display: block;
+      color: #a7a7b4;
+      font-size: 12px;
+    }
+
+    .arrow {
+      color: #aaa;
+      font-size: 28px;
+      line-height: 1;
+      transition: transform .2s ease, color .2s ease;
+    }
+
+    .link:hover .arrow {
+      transform: translateX(5px);
+      color: #fff;
+    }
+
+    .about {
+      margin-top: 22px;
+      padding: 17px;
+      text-align: left;
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .about-title {
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .about p {
+      color: #9696a5;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    footer {
+      margin-top: 24px;
+      color: #626270;
+      font-size: 10px;
+      letter-spacing: .3px;
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding-top: 25px;
+      }
+
+      .logo {
+        width: 130px;
+        height: 130px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      .link {
+        min-height: 68px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Online • Tripulação ativa
+    </div>
+
+    <div class="logo" role="img" aria-label="Logo Segurança Sus">
+      <svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="72" fill="#ff183f"/>
+        <circle cx="80" cy="80" r="61" fill="#101018"/>
+        <path d="M55 67c0-13 11-24 25-24s25 11 25 24v30c0 13-11 24-25 24S55 110 55 97V67Z" fill="#e9eef2"/>
+        <ellipse cx="80" cy="65" rx="17" ry="11" fill="#9fe8ff"/>
+        <path d="M64 104h32" stroke="#ff183f" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h1>Segurança Sus</h1>
+
+    <p class="subtitle">
+      🚨 <b>O impostor está entre nós!</b><br>
+      🎮 Vídeos, memes e aventuras de Among Us.<br>
+      Escolha uma rede e venha jogar comigo 👇
+    </p>
+
+    <div class="section-title">Minhas redes</div>
+
+    <section class="links">
+
+      <a class="link youtube"
+         href="https://www.youtube.com/@Seguran%C3%A7a_sus"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Abrir canal do Segurança Sus no YouTube">
+        <div class="icon">▶</div>
+        <div class="text">
+          <strong>YouTube</strong>
+          <span>Inscreva-se no meu canal</span>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="link tiktok"
+         href="https://www.tiktok.com/@seguranca_sus"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Abrir perfil do Segurança Sus no TikTok">
+        <div class="icon">♪</div>
+        <div class="text">
+          <strong>TikTok</strong>
+          <span>Siga @seguranca_sus</span>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+    </section>
+
+    <div class="about">
+      <div class="about-title">👀 Achou o impostor?</div>
+      <p>
+        Fique de olho nos próximos vídeos do Segurança Sus.
+        Quem sabe você não descobre o próximo impostor? 🚀
+      </p>
+    </div>
+
+    <footer>© 2026 • Segurança Sus • Feito para a tripulação 🚀</footer>
+
+  </main>
+</body>
+</html>
